@@ -121,7 +121,7 @@ body{
     align-items: center;
     flex-direction: row-reverse;
     margin-top: 50px;
-    background-color: #ff9494b9;
+    background-color: #5b1414f5;
     border:2px solid black;
 }
 
@@ -154,7 +154,7 @@ body{
 
 
 
-#qsListItem{
+.qsListItem{
 	height:auto;
 	width:100%;
 	padding:30px 50px;
@@ -169,9 +169,25 @@ body{
     
 }
 
+
+.commentListItem{
+	height:auto;
+	width:60%;
+	padding:30px 50px;
+	margin:20px;
+    border-radius: 10px;
+	background-color:white;
+    display: flex;
+    justify-content:start;
+    align-items:start;
+    flex-direction: column;
+    gap: 40px;
+    
+}
+
 #commentSectionContainer{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: none;
     background-color: rgba(255, 255, 255, 0.456);
     justify-content: center;
@@ -184,7 +200,7 @@ body{
  
 }
 
-#commentBox{
+.commentBox{
     
         resize: vertical;
     
@@ -192,13 +208,21 @@ body{
 
 #commentSection{
 
-    height: 50vh;
+    
+  
+  
+
+    height: auto;
     width: 70%;
     border: 1px solid black;
     background-color: white;
     display: flex;
     flex-direction: column;
-
+    font-size: 20px;
+    align-items: center;
+    background-color: #5b1414f5;
+    border-radius: 10px;
+    gap: 10px;
    
 }
 
@@ -229,8 +253,20 @@ body{
 	font-size:24px;
 }
 
-#qsListItemDetails{
+.qsListItemDetails{
     font-size: 20px;
     color: rgba(0, 0, 0, 0.688);
 }
 
+.commentListItemContent{
+ 
+    word-wrap: break-word;
+	width:100%;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size:24px;
+}
+
+.qsListItemDetails{
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.688);
+}

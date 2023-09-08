@@ -1,14 +1,19 @@
 let displayHome = document.getElementById("displayHome");
 let displayProfile = document.getElementById("displayProfile");
-let postQsBtn = document.getElementById("postQs1");
-let displayInputForQs = document.getElementById("displayInputForQs");
 
+
+let qsList = document.getElementById("QsList");
 
 let commentSectionContainer = document.getElementById("commentSectionContainer");
 
+
+let postQsBtn = document.getElementById("postQs1");
+let displayInputForQs = document.getElementById("displayInputForQs");
 let inputForQs = document.getElementById("inputForQs");
+
 let tokenEle = document.getElementById("token");
-let qsList = document.getElementById("QsList");
+
+
 
 
 document.addEventListener('keydown', (e) => {
@@ -74,7 +79,7 @@ xhttp1.onload = () => {
       qsList.innerHTML += 
       
       `
-      <div id="qsListItem">
+      <div class="qsListItem">
       <div class="qsListItemTimeMilli">
       ${item["question_time_milli"]}
       </div>
@@ -82,18 +87,18 @@ xhttp1.onload = () => {
       <div class="qsListItemContent">
              ${item["questioncontent"]}
       </div>
-      <div id="qsListItemDetails">
-             <span id="userPost">${item["questionUser"]}</span><br>
+      <div class="qsListItemDetails">
+             <span class="userPost">${item["questionUser"]}</span><br>
              ${item["questionTime"].toString().substring(0,25)}
       </div>
 
-      <div id="qsListCommentBox">
-            <textarea id ="commentBox" name="commentBox" rows="10" cols="100" maxlength="400"></textarea>
-            <button onclick="postComment()" type="button" id="postCommentBtn">Post Comment</button>
+      <div class="qsListCommentBox">
+            <textarea class ="commentBox" name="commentBox" rows="10" cols="100" maxlength="400"></textarea>
+            <button onclick="postComment()" type="button" class="postCommentBtn">Post Comment</button>
       </div>
       
-      <div id="showCommentsContainer">
-      <button onclick="myFunction()" type="button" id="showCommentsBtn">Comments</button>
+      <div class="showCommentsContainer">
+      <button onclick="myFunction(event)" type="button" class="showCommentsBtn">Comments</button>
       </div>
      
       </div>
@@ -112,7 +117,7 @@ xhttp1.onload = () => {
 
 function postComment(){
 
-  let commentInput = document.getElementById("commentBox");
+  let commentInput = this.document.getElementsByClassName("commentBox")[0];
 
   if (commentInput.value == "") {
     return;
@@ -120,16 +125,16 @@ function postComment(){
 
   var date = new Date();
 
-  let timeInMilliHidden = document.getElementsByClassName("qsListItemTimeMilli")[0];
-  let userPost = document.getElementById("userPost");
+  let timeInMilliHidden = this.document.getElementsByClassName("qsListItemTimeMilli")[0];
+  let userPost = this.document.getElementsByClassName("userPost")[0];
 
 
   var data = {
 
     "content":commentInput.value,
-    "content_user":userPost.innerText,
+    "content_user":userPost.innerText.toString().trim(),
     "time":date.toString(),
-    "timemilli":timeInMilliHidden.innerText.toString()
+    "timemilli":timeInMilliHidden.innerText.toString().trim()
 
   }
 
@@ -154,7 +159,7 @@ function postComment(){
 }
 
 
-function myFunction(){
+function myFunction(event){
   if(commentSectionContainer.style.display == "flex"){
     commentSectionContainer.style.display = "none";
   }
@@ -163,12 +168,17 @@ function myFunction(){
     commentSectionContainer.style.display = "flex";
   }
 
-  var commentSection = document.getElementById("commentSection");
+
+var qsListItemTimeMilli = event.target.parentElement.parentElement.getElementsByClassName("qsListItemTimeMilli")[0];
+var userPost = event.target.parentElement.parentElement.getElementsByClassName("userPost")[0];
+
+
+
 
 
 var xhttp1 = new XMLHttpRequest();
 
-xhttp1.open("GET", "/auth/getAllComments", true);
+xhttp1.open("GET", `/auth/getAllComments?qsListItemTimeMilli=${qsListItemTimeMilli.innerText.toString().trim()}&userPost=${userPost.innerText.toString().trim()}`, true);
 xhttp1.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 xhttp1.setRequestHeader("Authorization", "Bearer " + tokenEle.innerText);
 xhttp1.send();
@@ -177,23 +187,22 @@ xhttp1.onload = () => {
   if (xhttp1.status === 200) {
     var responseData = JSON.parse(xhttp1.response);
 
+    commentSection.innerHTML = "";
+
     responseData.forEach((item) => {
-
-      console.log(item);
-
 
      commentSection.innerHTML += 
       
       `
-      <div id="qsListItem">
+      <div class="commentListItem">
       
 
-      <div class="qsListItemContent">
+      <div class="commentListItemContent">
              ${item["comment_content"]}
       </div>
       
-      <div id="qsListItemDetails">
-             <span id="userPost">${item["comment_user"]}</span><br>
+      <div class="commentListItemDetails">
+             <span class="userPost">${item["comment_user"]}</span><br>
              ${item["comment_time"].toString().substring(0,25)}
       </div>
 

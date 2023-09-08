@@ -1,5 +1,6 @@
 package com.qsanspack.qsandans.controllers;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +102,6 @@ import com.qsanspack.qsandans.services.UserService;
            
         List<Question> list = userService.getAllQs(details.getUsername());
 
-
         Collections.reverse(list);
 
         return list;
@@ -109,14 +109,28 @@ import com.qsanspack.qsandans.services.UserService;
     }
 
     @GetMapping("/getAllComments")
-    public List<Comment> getAllComments(@AuthenticationPrincipal User details) {
+    public List<Comment> getAllComments(@AuthenticationPrincipal User details,@RequestParam String qsListItemTimeMilli,@RequestParam String userPost) {
+        
+        List<Comment> list = new ArrayList<>();
+        List<Comment> list2 = new ArrayList<>();
+
+        System.out.println("QSTIMEMILLLI---->"+qsListItemTimeMilli);
+    
+        
+       list = userService.getAllComments(details.getUsername());
+
+        
+        
+        for(int i = 0 ; i < list.size() ; i++){
            
-        List<Comment> list = userService.getAllComments(details.getUsername());
+            if(list.get(i).getComment_time_milli().equals(qsListItemTimeMilli) && list.get(i).getComment_user_post().equals(userPost)){
+                list2.add(list.get(i));
+            }
+        }
 
+        Collections.reverse(list2);
 
-        Collections.reverse(list);
-
-        return list;
+        return list2;
        
     }
 
