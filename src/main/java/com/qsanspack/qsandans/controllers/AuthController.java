@@ -108,13 +108,27 @@ import com.qsanspack.qsandans.services.UserService;
        
     }
 
+     @GetMapping("/getUserQs")
+    public List<Question> getUserQs(@AuthenticationPrincipal User details) {
+           
+        List<Question> list = userService.getUserQs(details.getUsername());
+
+        Collections.reverse(list);
+
+        return list;
+       
+    }
+
     @GetMapping("/getAllComments")
     public List<Comment> getAllComments(@AuthenticationPrincipal User details,@RequestParam String qsListItemTimeMilli,@RequestParam String userPost) {
         
+        if(userPost == ""){
+            userPost = details.getUsername();
+        }
+
         List<Comment> list = new ArrayList<>();
         List<Comment> list2 = new ArrayList<>();
 
-        System.out.println("QSTIMEMILLLI---->"+qsListItemTimeMilli);
     
         
        list = userService.getAllComments(details.getUsername());

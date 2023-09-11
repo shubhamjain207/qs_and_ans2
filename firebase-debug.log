@@ -1,0 +1,50 @@
+[debug] [2023-09-11T20:55:47.196Z] ----------------------------------------------------------------------
+[debug] [2023-09-11T20:55:47.198Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-09-11T20:55:47.198Z] CLI Version:   12.5.3
+[debug] [2023-09-11T20:55:47.199Z] Platform:      win32
+[debug] [2023-09-11T20:55:47.199Z] Node Version:  v18.17.1
+[debug] [2023-09-11T20:55:47.200Z] Time:          Mon Sep 11 2023 21:55:47 GMT+0100 (British Summer Time)
+[debug] [2023-09-11T20:55:47.200Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-11T20:55:47.208Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-11T20:55:47.209Z] > authorizing via signed-in user (shubhamjain82219@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\hp\Desktop\Springboot projects\qsandans\qsandans
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-09-11T20:56:32.431Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-09-11T20:56:32.973Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-09-11T20:56:32.973Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project qsandans-e2070 (qsandans) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2023-09-11T20:57:57.492Z] Error: Path contains invalid characters: C:\Users\hp\Desktop\Springboot projects\qsandans\qsandans\C:\Users\hp\Desktop\Springboot projects\qsandans\qsandans
+    at checkPath (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\mkdirs\utils.js:16:21)
+    at module.exports.makeDirSync (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\mkdirs\make-dir.js:21:3)
+    at Object.createFileSync (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\ensure\file.js:59:45)
+    at Config.writeProjectFile (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:152:12)
+    at C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:176:22
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async doSetup (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\hosting\index.js:141:13)
+    at async init (C:\Users\hp\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:41:9)
+[error] 
+[error] Error: An unexpected error has occurred.

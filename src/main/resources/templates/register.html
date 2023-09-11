@@ -11,17 +11,24 @@
 
     
     <div id="main_container">
+
+        <h1>Register</h1>
         <div id="form_container">
 
           
 
             <form th:object="${user}">
+                <div class="formItems">
 
-                <label for="username" >User Name:</label>
+
+                    <label for="username" >User Name:</label>
                 <input type="text" name="username" th:field="*{username}" th:classappend="${#fields.hasErrors('username') ? 'error':''}">
+                </div>
+
+                
 
                 <div th:each="e : ${#fields.errors('username')}" th:text="${e}"></div>
-
+ <div class="formItems">
                 <label for="password">Password:</label>
                 <input type="password" name="password" th:field="*{password}" >
 
@@ -29,12 +36,16 @@
 
                 <input type="file" accept="image/*" name="profileimage" th:field="*{profileimage}"> --> 
                 
+            </div>
 
-
+        <div class="formItems">
                 <label for="fullname" >Full Name:</label>
                 <input type="text" name="fullname" th:field="*{fullname}">
 
-                <input id="submitButton" type="button" value="submit">
+            </div>
+        <div class="formItems">
+                <input id="submitButton" type="button" value="Register">
+            </div>
             </form>
         </div>
     </div>

@@ -88,6 +88,16 @@ public class UserService implements UserDetailsService {
 
     }
 
+    public List<Question> getUserQs(String username){
+       
+        //User user= repo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("User name not found"));
+
+        return repo1.findByQuestionUser(username);
+        
+
+    }
+
+
     public List<Comment> getAllComments(String username){
        
         //User user= repo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("User name not found"));

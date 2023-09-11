@@ -22,6 +22,16 @@ document.addEventListener('keydown', (e) => {
             
             if(commentSectionContainer.style.display == "flex"){
               commentSectionContainer.style.display = "none";
+              document.body.style.overflowY = "scroll"
+            }
+
+            if( inputForQs.style.display = "flex"){
+              inputForQs.style.display = "none";
+              
+            }
+
+            if(displayInputForQs.style.display = "none"){
+              displayInputForQs.style.display = "block";
             }
            
            }
@@ -49,10 +59,12 @@ displayInputForQs.addEventListener("click",function(){
 
   if(inputForQs.style.display == "flex"){
     inputForQs.style.display = "none";
+    
   }
         
   else{
     inputForQs.style.display = "flex";
+    displayInputForQs.style.display = "none";
   }
 
 
@@ -162,10 +174,12 @@ function postComment(){
 function myFunction(event){
   if(commentSectionContainer.style.display == "flex"){
     commentSectionContainer.style.display = "none";
+    
   }
         
   else{
     commentSectionContainer.style.display = "flex";
+    document.body.style.overflowY = "hidden"
   }
 
 
